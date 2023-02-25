@@ -1,4 +1,4 @@
-name: Build and Publish storybook to GitHub Pages
+name: Deploy Storybook
 
 on:
   push:
@@ -7,15 +7,9 @@ on:
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-    - id: install-deps
-      run: npm install
-    - id: build-publish
-      uses: bitovi/github-actions-react-to-ghp@v1.2.0
-      with:
-        path: dist/storybook
-        build_command: pnpm build-storybook
+      - name: Deploy storybook to GitHub Pages
+        run: npm run deploy-storybook -- --ci
+        env:
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
