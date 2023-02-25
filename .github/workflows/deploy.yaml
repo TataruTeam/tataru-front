@@ -9,6 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Deploy storybook to GitHub Pages
         run: npm run deploy-storybook -- --ci
         env:
