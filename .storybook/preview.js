@@ -1,5 +1,3 @@
-import { themes } from '@storybook/theming';
-
 import '../src/styles/globals.css';
 import 'normalize.css'
 
@@ -11,7 +9,4 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  darkMode: {
-    dark: { ...themes.dark, previewBg: "white" }
-  }
 }
